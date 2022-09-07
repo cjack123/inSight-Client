@@ -1,14 +1,15 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from "react-dom/client";
+// import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from "react-router-dom";
 import { Insight } from './components/inSight'; 
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 
-// const rootElement = document.getElementById('root');
-// const root = createRoot(rootElement);
+const rootElement = document.getElementById('root');
+const root = createRoot(rootElement);
 
-ReactDOM.render(
+root.render(
   <React.StrictMode>
     <Router>
     <Insight />
