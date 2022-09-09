@@ -12,7 +12,7 @@ const root = createRoot(rootElement);
 root.render(
   <React.StrictMode>
     <Router>
-    <Insight />
+      <Insight />
     </Router>
   </React.StrictMode>,
   document.getElementById('root')
