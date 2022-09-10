@@ -22,7 +22,7 @@ export const NavBar = () => {
                 Navigation link
                 </li> */}
                 {
-                    (localStorage.getItem("lu_token") !== null) ?
+                    (localStorage.getItem("insight_token") !== null) ?
                         <li className="navbar__item">
                             <Link className="nav-link"
                                 onClick={() => {
