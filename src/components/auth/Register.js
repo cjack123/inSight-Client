@@ -1,6 +1,6 @@
 import React, { useRef } from "react"
 import { Link, useHistory } from "react-router-dom"
-import "./Auth.css"
+import "./Login.css"
 
 export const Register = () => {
     const firstName = useRef()
@@ -80,15 +80,15 @@ export const Register = () => {
                     </fieldset>
                 <fieldset>
                     <label htmlFor="inputCity"> Verify Password </label>
-                    <textarea ref={bio} name="city" className="form-control" placeholder="Nashville" />
+                    <textarea ref={city} name="city" className="form-control" placeholder="Nashville" />
                     </fieldset>
                 <fieldset>
                     <label htmlFor="inputState"> Verify Password </label>
-                    <textarea ref={bio} name="state" className="form-control" placeholder="TN" />
+                    <textarea ref={state} name="state" className="form-control" placeholder="TN" />
                     </fieldset>
                 <fieldset>
                     <label htmlFor="inputZip"> Verify Password </label>
-                    <textarea ref={bio} name="zip" className="form-control" placeholder="37076" />
+                    <textarea ref={zip} name="zip" className="form-control" placeholder="37076" />
                     </fieldset>
                 <fieldset style={{
                     textAlign: "center"
