@@ -9,7 +9,7 @@ export const Insight = () => {
     return (
         <>
         <Route render={() => {
-            if (localStorage.getItem("lu_token")) {
+            if (localStorage.getItem("insight_token")) {
                 return <>
                     <Route>
                         <NavBar />
