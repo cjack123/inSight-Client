@@ -9,8 +9,11 @@ export const NavBar = () => {
             <li className="navbar__item">
                 <Link className="navbar__link" to="/"> Home </Link>
                 </li>
-            <li className="navbar__item">
+            {/* <li className="navbar__item">
                 <Link className="nav-link" to="/cards">Gift Cards</Link>
+                </li> */}
+            <li className="navbar__item">
+                <Link className="nav-link" to="/cards">Gift Cards List</Link>
                 </li>
             <li className="navbar__item">
                 <Link className="nav-link" to="/trades">Trade</Link>

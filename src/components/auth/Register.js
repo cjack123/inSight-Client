@@ -79,15 +79,15 @@ export const Register = () => {
                     <input ref={verifyPassword} type="password" name="verifyPassword" className="form-control" placeholder="Verify password" required />
                     </fieldset>
                 <fieldset>
-                    <label htmlFor="inputCity"> Verify Password </label>
+                    <label htmlFor="inputCity"> Add City </label>
                     <textarea ref={city} name="city" className="form-control" placeholder="Nashville" />
                     </fieldset>
                 <fieldset>
-                    <label htmlFor="inputState"> Verify Password </label>
+                    <label htmlFor="inputState"> Add State </label>
                     <textarea ref={state} name="state" className="form-control" placeholder="TN" />
                     </fieldset>
                 <fieldset>
-                    <label htmlFor="inputZip"> Verify Password </label>
+                    <label htmlFor="inputZip"> Add Zip </label>
                     <textarea ref={zip} name="zip" className="form-control" placeholder="37076" />
                     </fieldset>
                 <fieldset style={{
