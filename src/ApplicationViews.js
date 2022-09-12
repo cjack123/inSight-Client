@@ -17,13 +17,13 @@ export const ApplicationViews = () => {
             <Route exact path="/cards">
                 <GCardList />
                 </Route>
-            <Route exact path="/cards/cardId">
+            <Route exact path="/cards/:cardId(\d+)">
                 <GCardDetails />
                 </Route>
             <Route exact path="/cards/new">
                 <GCardForm />
                 </Route>
-            <Route exact path="/cards/cardId/edit">
+            <Route exact path="/cards/:cardId/edit">
                     <GCardEditForm />
                 </Route>
             
