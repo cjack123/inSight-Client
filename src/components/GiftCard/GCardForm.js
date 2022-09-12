@@ -29,7 +29,7 @@ export const GCardForm = () => {
         domCard.preventDefault() //Prevents the browser from submitting the form
         const user = JSON.parse(sessionStorage.getItem("insight_users"))
         const newCard = {...currentCard}
-        newCard.userId = user.id
+        // newCard.userId = user.id
         newCard.dateTime = new Date().toLocaleString()
         let newValue = domCard.target.value
         newCard[domCard.target.id] = newValue
