@@ -16,7 +16,7 @@ export const GCardList = (props) => {
 
     // const removeCard = (cardId) => {
     //     deleteCard(cardId)
-    //         .then(() => getCardUserById(userId).then(setCards));
+    //         .then(() => getCardUserById(userIsd).then(setCards));
     // }
 
     const removeCard = (cardId) => {
@@ -31,9 +31,8 @@ export const GCardList = (props) => {
             <button className="btn" id="createBtn"
                 onClick={() => {
                     history.push({ pathname: "/cards/new" })
-                }}
-            >Register New Card
-            </button>
+            }}>Register New Card</button>
+
             {cards.map(card => 
                 <GCard
                 key={card.id}
