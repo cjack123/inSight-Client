@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react"
 import { useHistory, useParams } from 'react-router-dom'
-import { updateCard, getCardTypes, 
-    getCardById 
-} from './GCardManager'
-import "./GCard.css"
+import { updateCard, getCardById } from './GCardManager'
 
-export const UpdateCardForm = () => {
+
+export const GCardEditForm = () => {
     const history = useHistory();
     const [isLoading, setIsLoading] = useState(true);
     const {cardId} = useParams();
@@ -21,38 +19,42 @@ export const UpdateCardForm = () => {
         QRcode: ""
     })
 
-    const loadCard = () => {
-        if (cardId) {
-            getCardById(cardId)
-                .then(data => {
-                    setCurrentCard({
-                        id: cardId,
-                        card_number: data.card_number,
-                        card_type: data.card_type,
-                        expiration_date: data.expiration_date,
-                        security_code: data.security_code,
-                        start_balance: data.start_balance,
-                        current_balance: data.current_balance,
-                        QRcode: data.QRcode,
-                    })
-                })
-        }
+    const handleFieldChange = evt => {
+        const stateToChange = { ...currentCard };
+        stateToChange[evt.target.id] = evt.target.value;
+        setCurrentCard(stateToChange);
+    };
+
+    const updateExistingCard = evt => {
+        evt.preventDefault()
+        setIsLoading(true);
+
+        // This is an edit, so we need the id
+        const editedCard = {
+            id: cardId,
+            card_number: currentCard.card_number,
+            card_type: currentCard.card_type,
+            expiration_date: currentCard.expiration_date,
+            security_code: currentCard.security_code,
+            start_balance: currentCard.start_balance,
+            current_balance: currentCard.current_balance,
+            QRcode: currentCard.QRcode
+        };
+
+        updateCard(editedCard)
+            .then(() => history("/cards")
+        )
     }
 
     useEffect(() => {
-        loadCard()
-    }, [])
+        getCardById(cardId)
+            .then(card => {
+            setCurrentCard(card);
+            setIsLoading(false);
+            });
+    }, []);
 
-    useEffect(() => {
-        console.log('currentCard', currentCard)
-    }, [currentCard])
 
-    const handleFieldChange = (domEvent) => {
-        const updatedCard = {...currentCard}
-        let selectedVal = domEvent.target.value
-        updatedCard[domEvent.target.id] = selectedVal
-        setCurrentCard(updatedCard)
-    }
 
 
     return (
@@ -137,29 +139,14 @@ export const UpdateCardForm = () => {
                             placeholder="test"
                             />
                         </div>
-                        </fieldset>
-                <button type="submit"
-                    onClick={evt => {
-                        // Prevent form from being submitted
-                        evt.preventDefault()
-
-                        // Changing to snake case to match back end
-                        const editedCard = {
-                            card_number: parseInt(currentCard.card_number),
-                            card_type: currentCard.card_type,
-                            expiration_date: currentCard.expiration_date,
-                            security_code: parseInt(currentCard.security_code),
-                            start_balance: parseInt(currentCard.start_balance),
-                            current_balance: parseInt(currentCard.current_balance),
-                            QRcode: parseInt(currentCard.QRcode)
-                        }
-                        
-                        // Send POST request to your API
-                        updateCard(editedCard, cardId)
-                            .then(() => history.push('/card'))
-                    }}
-                    className="btn btn-primary" 
-                    id="createBtn">Update Card</button>
+                <div className="alignRight">
+                    <button
+                    type="button" disabled={isLoading}
+                    onClick={updateExistingCard}
+                    className="btn btn-primary"
+                    >Submit</button>
+                    </div>
+                </fieldset>
             </form>
         </>
     )

@@ -17,7 +17,7 @@ export const getCardUserById = (userId) => {
 }
 
 export const createCard = (card) => {
-    return fetch(`${remoteURL}/cards`, {
+    return fetch(`http://localhost:8000/cards`, {
         method: "POST",
         headers:{
             "Authorization": `Token ${localStorage.getItem("insight_token")}`,
@@ -28,15 +28,15 @@ export const createCard = (card) => {
         .then(res => res.json())
 }
 
-export const updateCard = (card, id) => {
-    return fetch(`http://localhost:8000/cards/${id}`, {
+export const updateCard = (editedCard) => {
+    return fetch(`http://localhost:8000/cards/${editedCard.id}`, {
         method: "PUT",
         headers: {
             "Authorization": `Token ${localStorage.getItem("insight_token")}`,
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(card)
-    })
+        body: JSON.stringify(editedCard)
+        }).then(data => data.json());
 }
 
 export const deleteCard = (id) => {
