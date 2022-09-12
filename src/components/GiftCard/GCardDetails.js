@@ -5,7 +5,7 @@ import { getCardById, deleteCard } from './GCardManager';
 export const GCardDetails = () => {
     const {cardId} = useParams();
     const [isLoading, setIsLoading] = useState(true);
-    const history =useHistory
+    const history = useHistory();
 
     const [ card, setCardDetail ] = useState({
         card_number: "",
@@ -17,17 +17,6 @@ export const GCardDetails = () => {
         QRcode: ""
     })
 
-    // const loadCard = () => {
-    //     return getCardById(cardId)
-    //         .then(data => {
-    //             setCardDetail(data)
-    //         })
-    // }
-
-    // useEffect(() => {
-    //     loadCard()
-    //     console.log(card)
-    // }, [])
 
     useEffect(() => {
         //getCardById(id) from CardManager and hang on to the data; put it into state
@@ -61,7 +50,7 @@ export const GCardDetails = () => {
                 <Link to={`/cards/${card.id}/edit`}>
                     <button>Edit</button>
                     </Link></div>
-            <button type="button" enabled={isLoading} onClick={handleDelete}>
+            <button type="button" disabled={isLoading} onClick={handleDelete}>
                 Delete Card
                 </button>
         <br></br>
@@ -71,6 +60,3 @@ export const GCardDetails = () => {
         
 
 }
-
-
-{/* <section  key={`card--${card.id}`} className="card"> */}
