@@ -1,7 +1,7 @@
 import React from "react"
 import "./transact.css"
 
-export const Transact = () => {
+export const TransactCard = () => {
 
     return (
         <section>
