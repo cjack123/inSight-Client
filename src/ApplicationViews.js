@@ -6,6 +6,8 @@ import { GCardList } from "./components/GiftCard/GCardList"
 import { GCardDetails } from "./components/GiftCard/GCardDetails"
 import { GCardForm } from "./components/GiftCard/GCardForm"
 import { GCardEditForm } from "./components/GiftCard/GCardEditForm"
+import { TransactCard } from "./components/transactions/transact"
+import { StoreList } from "./components/store/StoreList"
 
 
 export const ApplicationViews = () => {
@@ -14,19 +16,31 @@ export const ApplicationViews = () => {
             <Route exact path="/">
                 <Home />
                 </Route>
+
+
+
             <Route exact path="/cards">
-                <GCardList />
-                </Route>
+                <GCardList /> </Route>
+
             <Route exact path="/cards/:cardId(\d+)">
-                <GCardDetails />
-                </Route>
+                <GCardDetails /> </Route>
+
             <Route exact path="/cards/new">
-                <GCardForm />
-                </Route>
+                <GCardForm /> </Route>
+
             <Route exact path="/cards/:cardId/edit">
-                    <GCardEditForm />
-                </Route>
+                    <GCardEditForm /> </Route>
             
+            <Route exact path="/transactions">
+                <TransactCard />
+            </Route>
+
+
+
+
+
+            <Route exact path="/stores">
+                <StoreList /> </Route>
                
         </>
     

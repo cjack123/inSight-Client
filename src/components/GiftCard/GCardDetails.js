@@ -40,19 +40,23 @@ export const GCardDetails = () => {
     
     return ( <>
         <section>
+            <div><Link to={`/transactions`}>
+                    <button>Transactions</button>
+                    </Link></div>
             <div className="card__number">Card Number: {card.card_number}</div>
             <div className="card__type">Card Type: {card.card_type}</div>
             <div className="card__expType">Expiration Date: {card.expiration_date}</div>
             <div className="card__sCode">Security Code: {card.security_code}</div>
             <div className="card__secBalance">Initial Balance: {card.start_balance}</div>
             <div className="card__currBalance">Current Balance: {card.current_balance}</div>
-            <div>
+            <div className="buttons">
                 <Link to={`/cards/${card.id}/edit`}>
                     <button>Edit</button>
-                    </Link></div>
-            <button type="button" disabled={isLoading} onClick={handleDelete}>
-                Delete Card
-                </button>
+                    </Link>
+                <button type="button" disabled={isLoading} onClick={handleDelete}>
+                    Delete Card
+                    </button>
+                </div>
         <br></br>
         </section>
 

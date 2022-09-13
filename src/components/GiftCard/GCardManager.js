@@ -7,7 +7,7 @@ export const getCards = () => {
             "Authorization": `Token ${localStorage.getItem("insight_token")}`
         }
     })
-        .then(response => response.json())
+    .then(response => response.json())
 }
 
 export const getCardUserById = (userId) => {

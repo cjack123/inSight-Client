@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import { useHistory, Link } from "react-router-dom"
-import { getCards } from "./GCardManager"
+
 
 export const GCard = ({ card, removeCard }) => {
     const history = useHistory()
