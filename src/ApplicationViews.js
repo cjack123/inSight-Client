@@ -6,8 +6,11 @@ import { GCardList } from "./components/GiftCard/GCardList"
 import { GCardDetails } from "./components/GiftCard/GCardDetails"
 import { GCardForm } from "./components/GiftCard/GCardForm"
 import { GCardEditForm } from "./components/GiftCard/GCardEditForm"
-import { TransactCard } from "./components/transactions/transact"
+// import { TransactCard } from "./components/transactions/TransactCard"
 import { StoreList } from "./components/store/StoreList"
+import { TransactList } from "./components/transactions/TransList"
+import { TransactTest } from "./components/transactions/TransactTest"
+import { TransactDetail } from "./components/transactions/TransactDetails"
 
 
 export const ApplicationViews = () => {
@@ -32,8 +35,13 @@ export const ApplicationViews = () => {
                     <GCardEditForm /> </Route>
             
             <Route exact path="/transactions">
-                <TransactCard />
-            </Route>
+                <TransactList /> </Route>
+            
+            <Route exact path="/dtransactions">
+                <TransactDetail /> </Route>
+
+            <Route exact path="/cards/:cardId/transactions">
+                <TransactList /></Route>
 
 
 
