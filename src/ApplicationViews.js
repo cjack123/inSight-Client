@@ -11,6 +11,7 @@ import { StoreList } from "./components/store/StoreList"
 import { TransactList } from "./components/transactions/TransList"
 import { TransactTest } from "./components/transactions/TransactTest"
 import { TransactDetail } from "./components/transactions/TransactDetails"
+import { TransactForm } from "./components/transactions/TransactForm"
 
 
 export const ApplicationViews = () => {
@@ -39,6 +40,9 @@ export const ApplicationViews = () => {
             
             <Route exact path="/dtransactions">
                 <TransactDetail /> </Route>
+
+            <Route exact path="transactions/new">
+                <TransactForm /> </Route>
 
             <Route exact path="/cards/:cardId/transactions">
                 <TransactList /></Route>

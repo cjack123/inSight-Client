@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { TransactCard } from './TransactCard.js';
-import { getCardTransById, getTransactById, deleteTransact, getCardTransactById } from './TransactManager.js';
+import { getTransacts, getCardTransById, getTransactById, deleteTransact, getCardTransactById } from './TransactManager.js';
 
 import { useHistory, useParams } from 'react-router-dom'
 
@@ -11,12 +11,12 @@ export const TransactList = () => {
     const {cardId} = useParams();
 
     useEffect(() => {
-        getCardTransById().then(data => setTransacts(data))
+        getTransacts().then(data => setTransacts(data))
     }, [])
 
     const handleDeleteTransact = id => {
         deleteTransact(id)
-        .then(() => getCardTransById().then(setTransacts));
+        .then(() => getTransacts().then(setTransacts));
     };
 
     return (
@@ -24,7 +24,7 @@ export const TransactList = () => {
         {/* <h1>Transactions</h1> */}
 
         <article className="transactions">
-            <h2>List of gift transactions</h2>
+            <h2>Transactions</h2>
             <button className="btn" id="createBtn"
                 onClick={() => {
                     history.push({ pathname: "/transactions/new" })
@@ -36,7 +36,8 @@ export const TransactList = () => {
                     <TransactCard 
                     key={transact.id}
                     transact={transact}
-                    handleDeleteTransact={handleDeleteTransact} />)}
+                    handleDeleteTransact={handleDeleteTransact} />
+                )}
             </div>
         </article>
 
