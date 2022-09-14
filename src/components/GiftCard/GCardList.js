@@ -16,7 +16,7 @@ export const GCardList = (props) => {
 
 
     const removeCard = (id) => {
-        deleteCard(id)
+        deleteCard(cardId)
             .then(() => getCards().then(setCards));
     }
     

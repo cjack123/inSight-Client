@@ -19,6 +19,9 @@ export const NavBar = () => {
                 <Link className="nav-link" to="/transactions">All Transactions</Link>
                 </li>
             <li className="navbar__item">
+                <Link className="nav-link" to="/dtransactions">All Detail Transactions</Link>
+                </li>
+            <li className="navbar__item">
                 <Link className="nav-link" to="/stores">Stores</Link>
                 </li>
             <li className="navbar__item">
