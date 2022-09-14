@@ -7,7 +7,7 @@ export const getAllTypes = () => {
         }
     })
     .then(res => res.json())
-  }
+}
 
 export const getTypeById = (typeId) => {
   //be sure your types have good data and related to a location and customer
