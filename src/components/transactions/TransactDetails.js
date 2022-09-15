@@ -1,42 +1,58 @@
-// import React, { useState, useEffect } from "react";
-// import {useParams, useHistory} from "react-router-dom"
-// import { getTransactById } from "./TransactManager";
-// // import "./TransactDetail.css";
+import React, { useState, useEffect } from "react";
+import {useParams } from "react-router-dom"
+import { getTransactById, updateTransact } from "./TransactManager";
+// import "./TransactDetail.css";
 
-// export const TransactDetail = () => {
-//   const [transact, setTransact] = useState({ amount: "", transaction_date: "" });
-//   const [isLoading, setIsLoading] = useState(true);
+export const TransactDetail = () => {
+  const {transactionId} = useParams();
+  const [isLoading, setIsLoading] = useState(true);
 
-//   const {transactId} = useParams();
-//   const {storeId} = useParams();
-//   const history = useHistory();
+  const [ transact, setTransact ] = useState({
+    card: 0,
+    transaction_type: 0,
+    amount: "",
+    transaction_date: "",
+    store: 0
+  })
 
-//   useEffect(() => {
-//     getTransactById(transactId)
-//         .then(data => setTransact(data))
-// }, [])
+  // const loadTransact = () => {
+  //   return getTransactById(transactionId)
+  //     .then(data => {
+  //       setTransact(data)
+  //     })
+  // }
 
-//   useEffect(() => {
-//     if ((transact.store)?.length > 1)
-//     (transact.store).forEach(store => {
-//         if (transact.store.id === storeId) {
-//             setTransact({
-//                 id: transact.store.id,
-//                 name: transact.store.name,
-//             })
-//         }
-//     })
-// }, [transact.store])
+  // useEffect(() => {
+  //   console.log("useEffect", transactionId)
+  //   loadTransact()
+  //   console.log(transact)
+  // }, [])
 
-//   return (
-//     <section className="transact">
-//       {/* <div className="transact__type">{transact.transaction_type.type}</div> */}
-//       {/* What's up with the question mark???? See below.*/}
-//       {/* <div className="transact__storeName">Location: {transact.store.name}</div> */}
-//       <div className="transact__amount">Amount: {transact.amount}</div>
-//       {/* <button type="button" disabled={isLoading} onClick={handleDelete}>
-//           Discharge
-//         </button> */}
-//     </section>
-//   );
-// };
+
+  useEffect(() => {
+    //getCardById(id) from CardManager and hang on to the data; put it into state
+    console.log("useEffect", transactionId)
+    getTransactById(transactionId)
+      .then(transact => {
+        setTransact(transact);
+        setIsLoading(false);
+      });
+}, [transactionId]);
+
+
+  return (
+    <>
+      <h1>Hello</h1>
+        <section className="transact">
+          <div className="transact__name">Card Number: {transact.card.number}</div>
+          <div className="transact__date">Transaction Date: {transact.transaction_date}</div>
+          <div className="transact__type">Transaction Type: {transact.transaction_type.type}</div>
+          <div className="transact__storeName">Store: {transact.store.name}</div>
+          <div className="transact__amount">Amount: {transact.amount}</div>
+          {/* <button type="button" disabled={isLoading} onClick={handleDelete}>
+              Discharge
+            </button> */}
+            </section>
+    </>
+  );
+};

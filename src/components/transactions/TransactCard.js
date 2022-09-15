@@ -1,7 +1,8 @@
 import React from "react"
+import { Link } from "react-router-dom"
 import "./transact.css"
 
-export const TransactCard = ({ transact }) => {
+export const TransactCard = ({ transact, removeTransact }) => {
 
     return (
         <>
@@ -16,12 +17,15 @@ export const TransactCard = ({ transact }) => {
                         <div className="transact__type">Transaction Type: {transact.transaction_type}</div>
                         <div className="transact__store">Store: {transact.store}</div>
                         <div className="transact__amount">Amount: {transact.amount}</div>
-                        {/* <div className="buttons">
-                        <Link to={`/transacts/${transact.id}`}>
-                            <button>transact Details</button>
+                        <div className="buttons">
+                        {/* <Link to={`/transactions/${transact.id}`}>
+                            <button>Transaction Details</button>
+                            </Link> */}
+                        <Link to={`/transactions/${transact.id}/edit`}>
+                            <button>Edit Transaction</button>
                             </Link>
                         <button type="button" onClick={() => removeTransact(transact.id)}>Delete Transact</button>
-                        </div> */}
+                        </div>
                     <br></br>
                     </section>
         </article>
