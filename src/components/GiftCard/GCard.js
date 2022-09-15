@@ -3,7 +3,6 @@ import { useHistory, Link } from "react-router-dom"
 
 
 export const GCard = ({ card, removeCard }) => {
-    const history = useHistory()
 
     return (
         <>
