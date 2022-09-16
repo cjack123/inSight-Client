@@ -5,9 +5,9 @@ import { createTransact, getTypes, getStores, getCards } from "./TransactManager
 
 export const TransactForm = () => {
     const history = useHistory()
-    const [card, setCard] = useState([])
-    const [store, setStore] = useState([])
-    const [type, setType] = useState([])
+    const [cards, setCards] = useState([])
+    const [stores, setStores] = useState([])
+    const [types, setTypes] = useState([])
 
     /*
         Since the input fields are bound to the values of 
@@ -23,18 +23,18 @@ export const TransactForm = () => {
     })
 
     const loadCards = () => {
-        getCards().then(data => {setCard(data)
-        console.log(card)})
+        getCards().then(data => {setCards(data)
+        console.log(cards)})
     }
 
     const loadStores = () => {
-        getStores().then(data => {setStore(data)
-        console.log(card)})
+        getStores().then(data => {setStores(data)
+        console.log(stores)})
     }
 
     const loadTypes = () => {
-        getTypes().then(data => {setType(data)
-        console.log(card)})
+        getTypes().then(data => {setTypes(data)
+        console.log(types)})
     }
 
     useEffect(() => {
@@ -67,6 +67,7 @@ export const TransactForm = () => {
     }
 
     return (
+        <>
         <form className="TransactForm">
 
             <h2 className="transactForm__title">Report New Transaction</h2>
@@ -79,7 +80,7 @@ export const TransactForm = () => {
                                 onChange={changeTransactState} 
                                 className="form-control" >
                                     <option value="0">Select Card</option>
-                                    {card.map(c => (
+                                    {cards.map(c => (
                                         <option key={c.id} value={c.id}>
                                             {c.number}
                                         </option>
@@ -96,7 +97,7 @@ export const TransactForm = () => {
                                 onChange={changeTransactState} 
                                 className="form-control" >
                                     <option value="0">Select Store</option>
-                                    {store.map(s => (
+                                    {stores.map(s => (
                                         <option key={s.id} value={s.id}>
                                             {s.name}
                                         </option>
@@ -113,7 +114,7 @@ export const TransactForm = () => {
                                 onChange={changeTransactState} 
                                 className="form-control" >
                                     <option value="0">Select Transaction Type</option>
-                                    {type.map(t => (
+                                    {types.map(t => (
                                         <option key={t.id} value={t.id}>
                                             {t.type}
                                         </option>
@@ -167,7 +168,7 @@ export const TransactForm = () => {
 
         </form>
 
-
+    </>
 
     )
 

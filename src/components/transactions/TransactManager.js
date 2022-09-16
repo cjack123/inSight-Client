@@ -62,7 +62,11 @@ export const getCardById = (cardId) => {
 
 export const getCardTransById = (cardId) => {
   //be sure your transactions have good data and related to a card and transaction
-  return fetch(`${remoteURL}/transactions?cardId=${cardId}`)
+  return fetch(`${remoteURL}/transactions?cardId=${cardId}`,{
+    headers:{
+      "Authorization": `Token ${localStorage.getItem("insight_token")}`,
+    }
+  })
   .then(res => res.json())
 }
 

@@ -8,11 +8,11 @@ export const TransactDetail = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const [ transact, setTransact ] = useState({
-    card: 0,
-    transaction_type: 0,
+    card: {card_number: 0},
+    transaction_type: {type: 0},
     amount: "",
     transaction_date: "",
-    store: 0
+    store: {name:0}
   })
 
   // const loadTransact = () => {
@@ -37,14 +37,14 @@ export const TransactDetail = () => {
         setTransact(transact);
         setIsLoading(false);
       });
-}, [transactionId]);
+  }, [transactionId]);
 
 
   return (
     <>
       <h1>Hello</h1>
         <section className="transact">
-          <div className="transact__name">Card Number: {transact.card.number}</div>
+          <div className="transact__name">Card Number: {transact.card.card_number}</div>
           <div className="transact__date">Transaction Date: {transact.transaction_date}</div>
           <div className="transact__type">Transaction Type: {transact.transaction_type.type}</div>
           <div className="transact__storeName">Store: {transact.store.name}</div>
