@@ -37,6 +37,7 @@ export const GCardForm = () => {
     }
 
     return (
+        <>
         <form className="cardForm">
             <h2 className="cardForm__title">Add a New Card!</h2>
             <fieldset>
@@ -142,6 +143,7 @@ export const GCardForm = () => {
 
 
         </form>
+        </>
     )
 
 }

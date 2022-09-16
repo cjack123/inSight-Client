@@ -20,8 +20,13 @@ export const ApplicationViews = () => {
     return <>
             <Route exact path="/">
                 <Home />
-                </Route>
+            </Route>
+            <Route exact path="transactions/:transactionId(\d+)/edit">
+                <TransactEdit />
+            </Route>
 
+            <Route exact path="/cards/:cardId(\d+)/transactions">
+                <TransactList /></Route>
 
 
             <Route exact path="/cards">
@@ -33,23 +38,23 @@ export const ApplicationViews = () => {
             <Route exact path="/cards/new">
                 <GCardForm /> </Route>
 
-            <Route exact path="/cards/:cardId/edit">
+            <Route exact path="/cards/:cardId(\d+)/edit">
                     <GCardEditForm /> </Route>
             
             <Route exact path="/transactions">
                 <TransactList /> </Route>
             
-            <Route exact path="/transactionsdetail">
+            <Route exact path="/transactions/:transactionId(\d+)">
                 <TransactDetail /> </Route>
 
-            <Route exact path="transactions/new">
+            <Route exact path="/transactions/new">
                 <TransactForm /> </Route>
 
-            <Route exact path="transactions/:transactionId/edit">
+            <Route exact path="/transactions/:transactionId(\d+)/edit">
                 <TransactEdit />
             </Route>
 
-            <Route exact path="/cards/:cardId/transactions">
+            <Route exact path="/cards/:cardId(\d+)/transactions">
                 <TransactList /></Route>
 
 
