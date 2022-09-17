@@ -21,7 +21,7 @@ export const getStores = () => {
 }
 
 export const getTypes = () => {
-  return fetch(`${remoteURL}/types`, {
+  return fetch(`${remoteURL}/transactiontypes`, {
       headers:{
           "Authorization": `Token ${localStorage.getItem("insight_token")}`  
       }
@@ -84,15 +84,15 @@ export const createTransact = (transact) => {
       .then(res => res.json())
 }
 
-///Update Transaction
-export const updateTransact = (transact) => {
-  return fetch(`${remoteURL}/transactions/${transact.id}`, {
+///Update Existing Transaction
+export const updateTransact = (editedTransaction) => {
+  return fetch(`${remoteURL}/transactions/${editedTransaction.id}`, {
       method: "PUT",
       headers: {
           "Authorization": `Token ${localStorage.getItem("insight_token")}`,
           "Content-Type": "application/json"
       },
-      body: JSON.stringify(transact)
+      body: JSON.stringify(editedTransaction)
   })
 }
 

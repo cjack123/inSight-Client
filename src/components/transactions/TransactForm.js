@@ -17,8 +17,8 @@ export const TransactForm = () => {
    const [currentTransact, setCurrentTransact] = useState({
         cardId: 0,
         storeId: 0,
-        typeId: 0,
-        transact_date: "",
+        transaction_typeId: 1,
+        transaction_date: "",
         amount: "",
     })
 
@@ -82,7 +82,7 @@ export const TransactForm = () => {
                                     <option value="0">Select Card</option>
                                     {cards.map(c => (
                                         <option key={c.id} value={c.id}>
-                                            {c.number}
+                                            {c.card_number}
                                         </option>
                                     ))}
                             </select>
@@ -113,7 +113,7 @@ export const TransactForm = () => {
                                 name="type" id="typeId" 
                                 onChange={changeTransactState} 
                                 className="form-control" >
-                                    <option value="0">Select Transaction Type</option>
+                                    <option value="1">Select Transaction Type</option>
                                     {types.map(t => (
                                         <option key={t.id} value={t.id}>
                                             {t.type}
@@ -129,7 +129,7 @@ export const TransactForm = () => {
                         <input type="date" id="transaction_date" 
                             onChange={changeTransactState}
                             required autoFocus className="form-control"
-                            value={currentTransact.transact_date}
+                            value={currentTransact.transaction_date}
                             placeholder="01/01/2022"
                             />
                         </div>
@@ -155,8 +155,8 @@ export const TransactForm = () => {
                         const transact = {
                             card: parseInt(currentTransact.cardId),
                             store: currentTransact.storeId,
-                            type: currentTransact.typeId,
-                            transact_date: parseInt(currentTransact.transact_date),
+                            transaction_type: currentTransact.transaction_typeId,
+                            transaction_date: parseInt(currentTransact.transaction_date),
                             amount: parseInt(currentTransact.amount)
                         }
 

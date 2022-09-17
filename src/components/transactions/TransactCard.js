@@ -18,9 +18,9 @@ export const TransactCard = ({ transact, removeTransact }) => {
                         <div className="transact__store">Store: {transact.store.name}</div>
                         <div className="transact__amount">Amount: {transact.amount}</div>
                         <div className="buttons">
-                        <Link to={`/transactions/${transact.id}`}>
+                        {/* <Link to={`/transactions/${transact.id}`}>
                             <button>Transaction Details</button>
-                            </Link>
+                            </Link> */}
 
                         <Link to={`/transactions/${transact.id}/edit`}>
                             <button>Edit Transaction</button>

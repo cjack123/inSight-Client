@@ -1,6 +1,6 @@
 const remoteURL = "http://localhost:8000"
 
-
+//Get All Cards or Cards by Id
 export const getCards = () => {
     return fetch("http://localhost:8000/cards", {
         headers:{
@@ -16,6 +16,16 @@ export const getCardUserById = (userId) => {
     .then(res => res.json())
 }
 
+export const getCardById = (cardId) => {
+    return fetch(`${remoteURL}/cards/${cardId}`, {
+        headers:{
+            "Authorization": `Token ${localStorage.getItem("insight_token")}`,
+        } 
+    })
+        .then(response => response.json())
+}
+
+// Create New Card
 export const createCard = (card) => {
     return fetch(`http://localhost:8000/cards`, {
         method: "POST",
@@ -28,6 +38,7 @@ export const createCard = (card) => {
         .then(res => res.json())
 }
 
+// Update Existing Card
 export const updateCard = (editedCard) => {
     return fetch(`http://localhost:8000/cards/${editedCard.id}`, {
         method: "PUT",
@@ -39,6 +50,8 @@ export const updateCard = (editedCard) => {
         }).then(data => data.json());
 }
 
+
+// Delete Card
 export const deleteCard = (id) => {
     return fetch(`${remoteURL}/cards/${id}`, { 
         method: "DELETE",
@@ -47,13 +60,4 @@ export const deleteCard = (id) => {
         },
         body: JSON.stringify(id)
     })
-}
-
-export const getCardById = (cardId) => {
-    return fetch(`${remoteURL}/cards/${cardId}`, {
-        headers:{
-            "Authorization": `Token ${localStorage.getItem("insight_token")}`,
-        } 
-    })
-        .then(response => response.json())
 }

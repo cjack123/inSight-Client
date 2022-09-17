@@ -19,12 +19,13 @@ export const GCard = ({ card, removeCard }) => {
                         <div className="card__secBalance">Initial Balance: {card.start_balance}</div>
                         <div className="card__currBalance">Current Balance: {card.current_balance}</div>
                         <div className="buttons">
+                            
                         <Link to={`/cards/${card.id}`}>
-                            <button>Card Details</button>
-                            </Link>
+                            <button>Card Details</button></Link>
+
                         <Link to={`/cards/${card.id}/transactions`}>
-                            <button>Transactions</button>
-                            </Link>
+                            <button>Transactions</button></Link>
+                            
                         <button type="button" onClick={() => removeCard(card.id)}>Delete Card</button>
                         </div>
                     <br></br>
