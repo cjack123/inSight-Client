@@ -5,7 +5,7 @@ import { updateCard, getCardById } from './GCardManager'
 
 export const GCardEditForm = () => {
     const history = useHistory();
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
     const {cardId} = useParams();
 
     //Sets card to be edited on page load
@@ -42,7 +42,7 @@ export const GCardEditForm = () => {
         };
 
         updateCard(editedCard)
-            .then(() => history("/cards")
+            .then(() => history.push("/cards")
         )
     }
 
@@ -139,6 +139,7 @@ export const GCardEditForm = () => {
                             placeholder="test"
                             />
                         </div>
+                </fieldset>
                 <div className="alignRight">
                     <button
                     type="button" disabled={isLoading}
@@ -146,7 +147,6 @@ export const GCardEditForm = () => {
                     className="btn btn-primary"
                     >Submit</button>
                     </div>
-                </fieldset>
             </form>
         </>
     )

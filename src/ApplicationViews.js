@@ -21,12 +21,12 @@ export const ApplicationViews = () => {
             <Route exact path="/">
                 <Home />
             </Route>
-            <Route exact path="transactions/:transactionId(\d+)/edit">
+            {/* <Route exact path="transactions/:transactionId(\d+)/edit">
                 <TransactEdit />
             </Route>
 
             <Route exact path="/cards/:cardId(\d+)/transactions">
-                <TransactList /></Route>
+                <TransactList /></Route> */}
 
 
             <Route exact path="/cards">
@@ -40,6 +40,9 @@ export const ApplicationViews = () => {
 
             <Route exact path="/cards/:cardId(\d+)/edit">
                     <GCardEditForm /> </Route>
+            
+
+
             
             <Route exact path="/transactions">
                 <TransactList /> </Route>

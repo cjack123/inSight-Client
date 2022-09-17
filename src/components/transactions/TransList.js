@@ -15,9 +15,9 @@ export const TransactList = () => {
         else getTransacts().then(data => setTransacts(data))
     }, [])
 
-    const handleDeleteTransact = id => {
+    const removeTransact = (id) => {
         deleteTransact(id)
-        .then(() => getTransacts().then(setTransacts));
+            .then(() => getTransacts().then(setTransacts));
     };
     console.log(transacts)
 
@@ -40,7 +40,7 @@ export const TransactList = () => {
                     <TransactCard 
                     key={transact.id}
                     transact={transact}
-                    handleDeleteTransact={handleDeleteTransact} />
+                    removeTransact={removeTransact} />
                 )}
             </div>
         </article>
