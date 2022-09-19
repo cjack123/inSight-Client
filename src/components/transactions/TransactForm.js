@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useHistory } from 'react-router-dom'
 import { createTransact, getTypes, getStores, getCards } from "./TransactManager"
+import "./TransactForms.css"
 
 
 export const TransactForm = () => {
@@ -17,7 +18,7 @@ export const TransactForm = () => {
    const [currentTransact, setCurrentTransact] = useState({
         cardId: 0,
         storeId: 0,
-        transaction_typeId: 1,
+        transaction_typeId: 0,
         transaction_date: "",
         amount: "",
     })
@@ -56,7 +57,8 @@ export const TransactForm = () => {
         //TODO: Complete the onChange function
         const newTransact = { ...currentTransact }
         let selectedVal = domEvent.target.value
- 
+        newTransact.dateTime = new Date().toLocaleString()
+
         if (domEvent.target.id.includes("Id")) {
             selectedVal = parseInt(selectedVal)
         }
@@ -69,7 +71,7 @@ export const TransactForm = () => {
     return (
         <>
         <form className="TransactForm">
-
+        <section className="move">
             <h2 className="transactForm__title">Report New Transaction</h2>
 
                 <fieldset>
@@ -113,7 +115,7 @@ export const TransactForm = () => {
                                 name="type" id="typeId" 
                                 onChange={changeTransactState} 
                                 className="form-control" >
-                                    <option value="1">Select Transaction Type</option>
+                                    <option value="0">Select Transaction Type</option>
                                     {types.map(t => (
                                         <option key={t.id} value={t.id}>
                                             {t.type}
@@ -165,7 +167,7 @@ export const TransactForm = () => {
                             .then(() => history.push("/cards"))
                     }}
                     className="btn btn-primary">Create Gift Card</button>
-
+        </section>
         </form>
 
     </>

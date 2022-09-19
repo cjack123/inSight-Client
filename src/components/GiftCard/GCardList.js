@@ -23,7 +23,7 @@ export const GCardList = (props) => {
 
     return (
         <article className="cards">
-            <h2>List of gift cards</h2>
+            <h1>All Gift Cards</h1>
             <button className="btn" id="createBtn"
                 onClick={() => {
                     history.push({ pathname: "/cards/new" })
