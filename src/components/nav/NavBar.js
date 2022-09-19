@@ -26,12 +26,12 @@ export const NavBar = () => {
                 <Link className="nav-link" to="/transactions/new">Report New Transaction</Link>
                 </li>
 
-            <li className="navbar__item">
+            {/* <li className="navbar__item">
                 <Link className="nav-link" to="/stores">Stores</Link>
                 </li>
             <li className="navbar__item">
                 <Link className="nav-link" to="/blogs">Blog</Link>
-                </li>
+                </li> */}
                 {
                     (localStorage.getItem("insight_token") !== null) ?
                         <li className="navbar__item">

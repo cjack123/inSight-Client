@@ -64,6 +64,21 @@ export const TransactEdit = () => {
     }
 
     useEffect(() => {
+        //TODO: Get the cards, then set the state
+        loadCards()
+    }, [])
+
+    useEffect(() => {
+        //TODO: Get the stores, then set the state
+        loadStores()
+    }, [])
+
+    useEffect(() => {
+        //TODO: Get the transaction types, then set the state
+        loadTypes()
+    }, [])
+
+    useEffect(() => {
         getTransactById(transactionId)
             .then(transaction => {
                 setCurrentTransact(transaction);
@@ -75,8 +90,8 @@ export const TransactEdit = () => {
     return (
         <>
         <form className="TransactForm">
-
-        <h2 className="transactForm__title">Report New Transaction</h2>
+        <section className="move">
+        <h2 className="transactForm__title">Edit Transaction</h2>
 
             <fieldset>
                 <div className="form-group">
@@ -160,7 +175,7 @@ export const TransactEdit = () => {
                 className="btn btn-primary"
                 >Submit</button>
                 </div>
-
+        </section>
         </form>
     </>
     )
