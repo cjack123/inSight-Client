@@ -25,6 +25,19 @@ export const getCardById = (cardId) => {
         .then(response => response.json())
 }
 
+// Get All Categories
+
+export const getAllCategories = () => {
+    return fetch(`${remoteURL}/categories`, {
+        headers:{
+            "Authorization": `Token ${localStorage.getItem("insight_token")}`,
+        }
+    })
+    .then(response => response.json())
+}
+
+
+
 // Create New Card
 export const createCard = (card) => {
     return fetch(`http://localhost:8000/cards`, {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { useHistory } from 'react-router-dom'
-import { createCard, getCards } from "./GCardManager"
+import { createCard, getAllCategories, getCards } from "./GCardManager"
 
 export const GCardForm = () => {
     const history = useHistory()
@@ -18,13 +18,21 @@ export const GCardForm = () => {
         security_code: "",
         start_balance: "",
         current_balance: "",
-        QRcode: ""
+        category: ""
 
     })
 
     const [isLoading, setIsLoading] = useState(false);
 
+    const [categories, setCategories] = useState([])
+    
+    useEffect(() => {
+        getAllCategories()
+            .then(categoryData => setCategories(categoryData)
+        )
+    }, []); 
 
+    console.log(categories)
     const changeCardState = (domCard) => {
         domCard.preventDefault() //Prevents the browser from submitting the form
         const user = JSON.parse(sessionStorage.getItem("insight_users"))
@@ -35,6 +43,7 @@ export const GCardForm = () => {
         newCard[domCard.target.id] = newValue
         setCurrentCard(newCard)
     }
+
 
     return (
         <>
@@ -110,16 +119,20 @@ export const GCardForm = () => {
                         </div>
                         </fieldset>
                 <fieldset>
-                    <div className="form-group">
-                        <label htmlFor="QRcode">QRcode:</label>
-                        <input type="text" id="QRcode" 
-                            onChange={changeCardState}
-                            required autoFocus className="form-control"
-                            value={currentCard.QRcode}
-                            placeholder="test"
-                            />
-                        </div>
-                        </fieldset>
+                    <div>
+                        <select id="category_id">
+                            <option className="categories" onChange={changeCardState}>
+                                Select Categories
+                            </option>
+                            {categories.map((category) => (
+                                    <option key={category.id} value={category.id}>
+                                        {category.label}
+                                    </option>
+                                    ))}
+                            
+                        </select>
+                    </div>
+                </fieldset>
 
                 <button type="submit"
                         onClick={c => {
