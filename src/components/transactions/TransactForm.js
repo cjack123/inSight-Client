@@ -111,7 +111,7 @@ export const TransactForm = () => {
                 <fieldset>
                     <div className="form-group">
                         <label htmlFor="type">Transaction Type: </label>
-                        <select value={currentTransact.typeId} 
+                        <select value={currentTransact.transaction_typeId} 
                                 name="type" id="typeId" 
                                 onChange={changeTransactState} 
                                 className="form-control" >
