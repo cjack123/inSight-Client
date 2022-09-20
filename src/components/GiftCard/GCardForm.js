@@ -39,6 +39,7 @@ export const GCardForm = () => {
     return (
         <>
         <form className="cardForm">
+        <section className="move">
             <h2 className="cardForm__title">Add a New Card!</h2>
             <fieldset>
                 <div className="form-group">
@@ -141,7 +142,7 @@ export const GCardForm = () => {
                         }}
                         className="btn btn-primary">Create Gift Card</button>
 
-
+        </section>
         </form>
         </>
     )
