@@ -115,7 +115,7 @@ export const TransactForm = () => {
                                 name="type" id="typeId" 
                                 onChange={changeTransactState} 
                                 className="form-control" >
-                                    <option value="0">Select Transaction Type</option>
+                                    <option>Select Transaction Type</option>
                                     {types.map(t => (
                                         <option key={t.id} value={t.id}>
                                             {t.type}
