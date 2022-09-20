@@ -13,6 +13,13 @@ h1 {
   
 }
 
+h2 {
+    color: #CF6A5E;
+    text-align: center;
+    font-size: 30pt;
+    font-family: URW Chancery L, cursive;
+    /* font-size:40pt */
+}
 
 
 

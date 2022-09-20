@@ -9,9 +9,9 @@ export const TransactCard = ({ transact, removeTransact }) => {
 
         <article className="transact">
 
-                <section key={`transact--${transact.id}`} className="transact">
-                    <br></br>
-                    <br></br>
+        <section key={`transact--${transact.id}`} className="transact">
+        {/* <div className="CardsFlex">
+            <div className="transactCard"> */}
                     <div className="transact__number">Card: {transact.card.card_number}</div>
                         <div className="transact__number">Transaction Date: {transact.transaction_date}</div>
                         <div className="transact__type">Transaction Type: {transact.transaction_type.type}</div>
@@ -27,9 +27,11 @@ export const TransactCard = ({ transact, removeTransact }) => {
                             </Link>
 
                         <button type="button" onClick={() => removeTransact(transact.id)}>Delete Transact</button>
-                        </div>
-                    <br></br>
-                    </section>
+                    </div>
+            {/* </div>
+        </div>   */}
+        </section>
+
         </article>
         </>
     )
