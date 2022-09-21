@@ -36,11 +36,11 @@ export const TransactEdit = () => {
         // This is an edit, so we need the id
         const editedTransaction = {
             id: transactionId,
-            card: parseInt(currentTransact.cardId),
-            store: currentTransact.storeId,
-            transaction_type: currentTransact.transaction_typeId,
-            transaction_date: parseInt(currentTransact.transaction_date),
-            amount: parseInt(currentTransact.amount)
+            card: parseInt(currentTransact.card.id),
+            store: parseInt(currentTransact.storeId),
+            transaction_type: parseInt(currentTransact.transaction_typeId),
+            transaction_date: currentTransact.transaction_date,
+            amount: parseFloat(currentTransact.amount)
         };
 
         updateTransact(editedTransaction)
@@ -81,7 +81,10 @@ export const TransactEdit = () => {
     useEffect(() => {
         getTransactById(transactionId)
             .then(transaction => {
-                setCurrentTransact(transaction);
+               const loadedTransaction = { ...transaction}
+                loadedTransaction.transaction_typeId = transaction.transaction_type.id
+                loadedTransaction.storeId = transaction.store.id
+                setCurrentTransact(loadedTransaction);
             setIsLoading(false);
             });
     }, []);
@@ -92,7 +95,7 @@ export const TransactEdit = () => {
         <form className="TransactForm">
         <section className="move">
         <h2 className="transactForm__title">Edit Transaction</h2>
-
+{/* 
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="card">Card: </label>
@@ -108,7 +111,7 @@ export const TransactEdit = () => {
                                 ))}
                         </select>
                         </div>
-                        </fieldset>
+                        </fieldset> */}
 
             <fieldset>
                 <div className="form-group">
@@ -127,22 +130,22 @@ export const TransactEdit = () => {
                         </div>
                         </fieldset>
 
-            <fieldset>
-                <div className="form-group">
-                    <label htmlFor="type">Transaction Type: </label>
-                    <select value={currentTransact.typeId} 
-                            name="type" id="typeId" 
-                            onChange={handleFieldChange} 
-                            className="form-control" >
-                                <option value="1">Select Transaction Type</option>
-                                {types.map(t => (
-                                    <option key={t.id} value={t.id}>
-                                        {t.type}
-                                    </option>
-                                ))}
-                        </select>
-                        </div>
-                        </fieldset>
+                    <fieldset>
+                    <div className="form-group">
+                        <label htmlFor="type">Transaction Type: </label>
+                        <select value={currentTransact.transaction_typeId} 
+                                name="type" id="transaction_typeId" 
+                                onChange={handleFieldChange} 
+                                className="form-control" >
+                                    <option>Select Transaction Type</option>
+                                    {types.map(t => (
+                                        <option key={t.id} value={t.id}>
+                                            {t.type}
+                                        </option>
+                                    ))}
+                            </select>
+                            </div>
+                            </fieldset>
 
             <fieldset>
                 <div className="form-group">
