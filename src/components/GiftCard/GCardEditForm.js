@@ -16,7 +16,7 @@ export const GCardEditForm = () => {
         security_code: "",
         start_balance: "",
         current_balance: "",
-        QRcode: ""
+        category: ""
     })
 
     const [categories, setCategories] = useState([])
@@ -40,14 +40,16 @@ export const GCardEditForm = () => {
             security_code: currentCard.security_code,
             start_balance: currentCard.start_balance,
             current_balance: currentCard.current_balance,
-            category: ""
+            category: currentCard.category
         };
 
         updateCard(editedCard)
             .then(() => history.push("/cards")
         )
-    }
 
+        console.log(editedCard)
+    }
+    
     useEffect(() => {
         getCardById(cardId)
             .then(card => {
@@ -62,6 +64,8 @@ export const GCardEditForm = () => {
         )
     }, []); 
 
+    useEffect(() => {console.log(currentCard)
+    },[currentCard])
 
     return (
         <>
@@ -137,8 +141,10 @@ export const GCardEditForm = () => {
                         </fieldset>
                 <fieldset>
                     <div>
-                        <select id="category_id">
+                    <label htmlFor="categories">Categories:</label>
+                        <select id="category">
                             <option className="categories" onChange={handleFieldChange}>
+                            Select Categories
                             </option>
                             {categories.map((category) => (
                                     <option key={category.id} value={category.id}>
