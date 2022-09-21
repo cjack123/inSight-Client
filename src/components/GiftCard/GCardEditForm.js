@@ -139,7 +139,7 @@ export const GCardEditForm = () => {
                             />
                         </div>
                         </fieldset>
-                <fieldset>
+                {/* <fieldset>
                     <div>
                     <label htmlFor="categories">Categories:</label>
                         <select id="category">
@@ -153,7 +153,7 @@ export const GCardEditForm = () => {
                                     ))}
                                 </select>
                         </div>
-                        </fieldset>
+                        </fieldset> */}
                 <div className="alignRight">
                     <button
                     type="button" disabled={isLoading}

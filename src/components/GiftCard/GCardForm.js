@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { useHistory } from 'react-router-dom'
-import { createCard, getAllCategories, getCards } from "./GCardManager"
+import { createCard, getAllCategories, getCards, getCardById } from "./GCardManager"
 
 export const GCardForm = () => {
     const history = useHistory()
@@ -18,13 +18,14 @@ export const GCardForm = () => {
         security_code: "",
         start_balance: "",
         current_balance: "",
-        category: ""
+        categories: []
 
     })
 
     const [isLoading, setIsLoading] = useState(false);
 
     const [categories, setCategories] = useState([])
+    const [checkedCategories, setCheckedCategories] = useState([])
     
     useEffect(() => {
         getAllCategories()
@@ -32,11 +33,39 @@ export const GCardForm = () => {
         )
     }, []); 
 
-    console.log(categories)
+
+    useEffect(() => {
+        const changedCard = { ...currentCard }
+        changedCard.categories = checkedCategories
+        setCurrentCard(changedCard )
+    }, [checkedCategories])
+
+    console.log(currentCard)
+    // const changeCardState = (domCard) => {
+    //     domCard.preventDefault() //Prevents the browser from submitting the form
+    //     const user = JSON.parse(sessionStorage.getItem("insight_users"))
+    //     const newCard = {...currentCard}
+    //     // newCard.userId = user.id
+    //     newCard.dateTime = new Date().toLocaleString()
+    //     let newValue = domCard.target.value
+    //     newCard[domCard.target.id] = newValue
+    //     setCurrentCard(newCard)
+    // }
     const changeCardState = (domCard) => {
         domCard.preventDefault() //Prevents the browser from submitting the form
-        const user = JSON.parse(sessionStorage.getItem("insight_users"))
+        // const user = JSON.parse(sessionStorage.getItem("insight_users"))
         const newCard = {...currentCard}
+            if (domCard.target.name.includes("categories")) {
+                const currentCategories = [...checkedCategories]
+                if (domCard.target.checked) {
+                    currentCategories.push(parseInt(domCard.target.value))
+                } else {
+                    const index = currentCategories.indexOf(parseInt(domCard.target.value))
+                    currentCategories.splice(index, 1)
+                }
+
+                setCheckedCategories(currentCategories)
+            }
         // newCard.userId = user.id
         newCard.dateTime = new Date().toLocaleString()
         let newValue = domCard.target.value
@@ -118,9 +147,9 @@ export const GCardForm = () => {
                             />
                         </div>
                         </fieldset>
-                <fieldset>
+                {/* <fieldset>
                     <div>
-                        <select id="category_id" multiple>
+                        <select id="category_id">
                             <option className="categories" onChange={changeCardState}>
                                 Select Categories
                             </option>
@@ -131,7 +160,25 @@ export const GCardForm = () => {
                                     ))}
                         </select>
                     </div>
-                </fieldset>
+                </fieldset> */}
+                <fieldset>
+                <div className="form-group form-cat">
+                    <h6> Categories:</h6>
+                    {
+                        categories.map(c => {
+                            return <div key={c.id} className="categoryCheckbox">
+                                <input type="checkbox" id="categories"
+                                    name={`categories ${c.id}`}
+                                    value={c.id}
+                                    checked={checkedCategories.includes(c.id)}
+                                    onChange={changeCardState}
+                                ></input>
+                                <label htmlFor={c.id}> {c.label}</label>
+                            </div>
+                        })
+                    }
+                </div>
+            </fieldset>
 
                 <button type="submit"
                         onClick={c => {
@@ -145,7 +192,7 @@ export const GCardForm = () => {
                                 security_code: parseInt(currentCard.security_code),
                                 start_balance: parseInt(currentCard.start_balance),
                                 current_balance: parseInt(currentCard.current_balance),
-                                QRcode: parseInt(currentCard.QRcode)
+                                category: currentCard.categories
                             }
 
                             //Send POST request to your API
