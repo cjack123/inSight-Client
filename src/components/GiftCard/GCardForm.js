@@ -120,7 +120,7 @@ export const GCardForm = () => {
                         </fieldset>
                 <fieldset>
                     <div>
-                        <select id="category_id">
+                        <select id="category_id" multiple>
                             <option className="categories" onChange={changeCardState}>
                                 Select Categories
                             </option>
@@ -129,7 +129,6 @@ export const GCardForm = () => {
                                         {category.label}
                                     </option>
                                     ))}
-                            
                         </select>
                     </div>
                 </fieldset>

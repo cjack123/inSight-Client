@@ -112,7 +112,7 @@ export const TransactForm = () => {
                     <div className="form-group">
                         <label htmlFor="type">Transaction Type: </label>
                         <select value={currentTransact.transaction_typeId} 
-                                name="type" id="typeId" 
+                                name="type" id="transaction_typeId" 
                                 onChange={changeTransactState} 
                                 className="form-control" >
                                     <option>Select Transaction Type</option>
@@ -158,7 +158,7 @@ export const TransactForm = () => {
                             card: parseInt(currentTransact.cardId),
                             store: currentTransact.storeId,
                             transaction_type: currentTransact.transaction_typeId,
-                            transaction_date: parseInt(currentTransact.transaction_date),
+                            transaction_date: currentTransact.transaction_date,
                             amount: parseInt(currentTransact.amount)
                         }
 

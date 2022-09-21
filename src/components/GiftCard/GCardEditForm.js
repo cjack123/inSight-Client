@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { useHistory, useParams } from 'react-router-dom'
-import { updateCard, getCardById } from './GCardManager'
+import { updateCard, getCardById, getAllCategories } from './GCardManager'
 
 
 export const GCardEditForm = () => {
@@ -18,6 +18,8 @@ export const GCardEditForm = () => {
         current_balance: "",
         QRcode: ""
     })
+
+    const [categories, setCategories] = useState([])
 
     const handleFieldChange = evt => {
         const stateToChange = { ...currentCard };
@@ -38,7 +40,7 @@ export const GCardEditForm = () => {
             security_code: currentCard.security_code,
             start_balance: currentCard.start_balance,
             current_balance: currentCard.current_balance,
-            QRcode: currentCard.QRcode
+            category: ""
         };
 
         updateCard(editedCard)
@@ -54,7 +56,11 @@ export const GCardEditForm = () => {
             });
     }, []);
 
-
+    useEffect(() => {
+        getAllCategories()
+            .then(categoryData => setCategories(categoryData)
+        )
+    }, []); 
 
 
     return (
@@ -130,16 +136,18 @@ export const GCardEditForm = () => {
                         </div>
                         </fieldset>
                 <fieldset>
-                    <div className="form-group">
-                        <label htmlFor="QRcode">QRcode:</label>
-                        <input type="text" id="QRcode" 
-                            onChange={handleFieldChange}
-                            required autoFocus className="form-control"
-                            value={currentCard.QRcode}
-                            placeholder="test"
-                            />
+                    <div>
+                        <select id="category_id">
+                            <option className="categories" onChange={handleFieldChange}>
+                            </option>
+                            {categories.map((category) => (
+                                    <option key={category.id} value={category.id}>
+                                        {category.label}
+                                    </option>
+                                    ))}
+                                </select>
                         </div>
-                </fieldset>
+                        </fieldset>
                 <div className="alignRight">
                     <button
                     type="button" disabled={isLoading}
