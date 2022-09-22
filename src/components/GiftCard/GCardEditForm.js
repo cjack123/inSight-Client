@@ -38,8 +38,8 @@ export const GCardEditForm = () => {
             card_type: currentCard.card_type,
             expiration_date: currentCard.expiration_date,
             security_code: currentCard.security_code,
-            start_balance: currentCard.start_balance,
-            current_balance: currentCard.current_balance,
+            start_balance: parseFloat(currentCard.start_balance),
+            current_balance: parseFloat(currentCard.current_balance),
             category: currentCard.category
         };
 
