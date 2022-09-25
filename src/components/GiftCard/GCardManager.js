@@ -4,7 +4,8 @@ const remoteURL = "http://localhost:8000"
 export const getCards = () => {
     return fetch("http://localhost:8000/cards", {
         headers:{
-            "Authorization": `Token ${localStorage.getItem("insight_token")}`
+            "Authorization": `Token ${localStorage.getItem("insight_token")}`,
+
         }
     })
     .then(response => response.json())
@@ -12,7 +13,9 @@ export const getCards = () => {
 
 export const getCardUserById = (userId) => {
     //be sure your goals have good data and related to a card
-    return fetch(`${remoteURL}/cards?userId=${userId}`)
+    return fetch(`${remoteURL}/cards?userId=${userId}`, {
+    headers:{"Authorization": `Token ${localStorage.getItem("insight_token")}`,}
+    })
     .then(res => res.json())
 }
 

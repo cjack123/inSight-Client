@@ -164,7 +164,7 @@ export const TransactForm = () => {
 
                         //Send POST request to your API
                         createTransact(transact)
-                            .then(() => history.push("/cards"))
+                            .then(() => history.push("/transactions"))
                     }}
                     className="btn btn-primary">Create Gift Card</button>
         </section>

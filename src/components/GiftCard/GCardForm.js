@@ -190,8 +190,8 @@ export const GCardForm = () => {
                                 card_type: currentCard.card_type,
                                 expiration_date: currentCard.expiration_date,
                                 security_code: parseInt(currentCard.security_code),
-                                start_balance: parseInt(currentCard.start_balance),
-                                current_balance: parseInt(currentCard.current_balance),
+                                start_balance: currentCard.start_balance,
+                                current_balance: currentCard.current_balance,
                                 category: currentCard.categories
                             }
 

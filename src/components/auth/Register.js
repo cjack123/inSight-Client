@@ -40,7 +40,7 @@ export const Register = () => {
                 .then(res => {
                     if ("token" in res) {
                         localStorage.setItem("inSight_token", res.token)
-                        history.push("/")
+                        history.push("/login")
                     }
                 })
         } else {
