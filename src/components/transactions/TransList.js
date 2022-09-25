@@ -18,7 +18,7 @@ export const TransactList = () => {
 
     const removeTransact = (id) => {
         deleteTransact(id)
-            .then(() => getTransacts().then(setTransacts));
+            // .then(() => getTransacts().then(setTransacts));
     };
     console.log(transacts)
 

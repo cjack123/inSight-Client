@@ -159,12 +159,12 @@ export const TransactForm = () => {
                             store: currentTransact.storeId,
                             transaction_type: currentTransact.transaction_typeId,
                             transaction_date: currentTransact.transaction_date,
-                            amount: parseInt(currentTransact.amount)
+                            amount: parseFloat(currentTransact.amount)
                         }
 
                         //Send POST request to your API
                         createTransact(transact)
-                            .then(() => history.push("/cards"))
+                            .then(() => history.push("/transactions"))
                     }}
                     className="btn btn-primary">Create Gift Card</button>
         </section>
